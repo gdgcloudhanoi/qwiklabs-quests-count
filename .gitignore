@@ -1,0 +1,8 @@
+venv/
+result*
+*~
+*.exe
+.idea/
+*.iml
+*.swp
+.vimrc
