@@ -34,7 +34,7 @@ DATA = {
 
 FILTER = {
     'skip_quests': ['GCP Essentials'],
-    'date_range': [datetime.date(2019, 7, 28), datetime.date(2019, 8, 30)],
+    'date_range': [datetime.date(2019, 7, 28), datetime.date(2019, 9, 1)],
     'location': {
         'hanoi': {
             'title': 'Hà Nội',
