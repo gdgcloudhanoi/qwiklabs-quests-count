@@ -34,7 +34,7 @@ DATA = {
 
 FILTER = {
     'skip_quests': ['GCP Essentials'],
-    'date_range': [datetime.date(2019, 7, 28), datetime.date(2019, 9, 1)],
+    'date_range': [datetime.date(2020, 3, 25), datetime.date(2020, 4, 4)],
     'location': {
         'hanoi': {
             'title': 'Hà Nội',
@@ -58,8 +58,8 @@ OPTIONS = {
 }
 
 GDOCS_URL = {
-    'file_id': '1VE2sH6zePhdwaSDir9ucUoXPYTXIjIR3eRFKQ-IVZcw',
-    'sheet_id': '241580121',
+    'file_id': '1mBB8RAS8uyYG2QoNUAcjMV0VMgFiHyZ7yHBQLRsCmyc',
+    'sheet_id': '637442900',
     'format': 'xlsx',
     'template': 'https://docs.google.com/feeds/download/spreadsheets/Export' +
                 '?key=%(file_id)s&exportFormat=%(format)s&gid=%(sheet_id)s',
