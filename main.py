@@ -33,8 +33,10 @@ DATA = {
 }
 
 FILTER = {
-    'skip_quests': ['GCP Essentials'],
-    'date_range': [datetime.date(2020, 3, 25), datetime.date(2020, 4, 4)],
+    'skip_quests': ['Baseline: Data, ML, AI', 'Machine Learning APIs',
+                    'Intro to ML: Language Processing', 'Intro to ML: Image Processing',
+                    'Intermediate ML: TensorFlow on GCP','Data Engineering', 'Data Science on Google Cloud'],
+    'date_range': [datetime.date(2020, 3, 21), datetime.date(2020, 4, 30)],
     'location': {
         'hanoi': {
             'title': 'Hà Nội',
@@ -199,7 +201,7 @@ def parse_input(input):
                 'name': row[2].value.strip(),
                 'nick_name': row[3].value.strip(),
                 'qwiklabs_link': row[4].value.strip(),
-                'location': row[5].value.strip(),
+                'location': row[7].value.strip(),
                 'quests': [],
                 'legal_quests': [],
             }
@@ -244,7 +246,8 @@ def count_quests():
     
     # Sort people by LEGAL quests
     ok_list.sort(key=lambda x: len(x['legal_quests']), reverse=True)
-    
+    # ok_list.sort(key=lambda x: len(x['quests']), reverse=True)
+
     # Filter and sort result by time submitting first quest
     def _pp_1st_quest_date_str(person):
         date = pp_1st_quest_date(person)
@@ -467,11 +470,12 @@ def count_quests_of(person):
             # Count legal quests
             legal_quests = []
             skip_quests = FILTER['skip_quests']
-            from_date, to_date = FILTER['date_range']
+            from_date = FILTER['date_range'][0]
+            to_date = FILTER['date_range'][1]
             for quest in person['quests']:
-                if (quest['title'] not in skip_quests and
-                    (not from_date or from_date <= quest['earned_date']) and
-                    (not to_date or to_date >= quest['earned_date'])):
+                if (quest['title'] in skip_quests and
+                    (quest['earned_date'] and from_date <= quest['earned_date']) and
+                    (quest['earned_date'] and to_date >= quest['earned_date'])):
                     legal_quests.append(quest)
             person['legal_quests'] = legal_quests
 
