@@ -33,8 +33,8 @@ DATA = {
 }
 
 FILTER = {
-    'skip_quests': ['GCP Essentials'],
-    'date_range': [datetime.date(2020, 3, 25), datetime.date(2020, 4, 4)],
+    'skip_quests': [],
+    'date_range': [datetime.date(2020, 3, 21), datetime.date(2020, 4, 30)],
     'location': {
         'hanoi': {
             'title': 'Hà Nội',
@@ -58,12 +58,20 @@ OPTIONS = {
 }
 
 GDOCS_URL = {
-    'file_id': '1mBB8RAS8uyYG2QoNUAcjMV0VMgFiHyZ7yHBQLRsCmyc',
-    'sheet_id': '637442900',
+    'file_id': '1n4mgw61zo2ewrvAWVKPIxJHEFTM1aLrvk6zlbEfHw1c',
+    'sheet_id': '1165098945',
     'format': 'xlsx',
     'template': 'https://docs.google.com/feeds/download/spreadsheets/Export' +
                 '?key=%(file_id)s&exportFormat=%(format)s&gid=%(sheet_id)s',
 }
+
+GDOCS_COL_TIME = 0
+GDOCS_COL_EMAIL = 1
+GDOCS_COL_NAME = 2
+GDOCS_COL_NICK_NAME = 3
+GDOCS_COL_QWIKLABS_LINK = 4
+GDOCS_COL_LOCATION = 6
+
 
 DATE_FORMAT = '%b %d, %Y'
 INDENT_LV1 = '    '
@@ -194,12 +202,12 @@ def parse_input(input):
         else:
             person = {
                 'row_id': row_id,
-                'timestamp': row[0].value,
-                'email': row[1].value.strip().lower(),
-                'name': row[2].value.strip(),
-                'nick_name': row[3].value.strip(),
-                'qwiklabs_link': row[4].value.strip(),
-                'location': row[5].value.strip(),
+                'timestamp': row[GDOCS_COL_TIME].value,
+                'email': row[GDOCS_COL_EMAIL].value.strip().lower(),
+                'name': row[GDOCS_COL_NAME].value.strip(),
+                'nick_name': row[GDOCS_COL_NICK_NAME].value.strip(),
+                'qwiklabs_link': row[GDOCS_COL_QWIKLABS_LINK].value.strip(),
+                'location': row[GDOCS_COL_LOCATION].value.strip(),
                 'quests': [],
                 'legal_quests': [],
             }
