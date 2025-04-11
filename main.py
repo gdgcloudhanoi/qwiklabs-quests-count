@@ -505,7 +505,7 @@ def show_quests_report_of(person):
         if len(quests_at_line):
             show_quests_at_line(person, quests_at_line)
         
-def show_quests_at_line(person, quests_title):
+def show_quests_at_line(person, ):
     args = []
     for title in quests_title:
         title = (' %s ' % title) if COLORED_MODE else ('[%s]' % title)
